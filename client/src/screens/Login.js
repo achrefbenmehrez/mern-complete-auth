@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { authenticate, isAuth } from "../helpers/auth";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import env from "react-dotenv";
 
@@ -49,7 +50,7 @@ const Login = ({ history }) => {
           });
         })
         .catch((err) => {
-          toast.error(err.response);
+          toast.error(err.response.data.error);
         });
     } else {
       toast.error("Please fill all fields");
@@ -183,6 +184,12 @@ const Login = ({ history }) => {
                     </button>
                   )}
                 />
+                <Link
+                  to='/forgot-password'
+                  className='no-underline hover:underline text-indigo-500 text-md text-right absolute right-0  mt-2'
+                >
+                  Forget password?
+                </Link>
               </div>
             </form>
           </div>
