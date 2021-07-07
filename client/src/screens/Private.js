@@ -19,8 +19,9 @@ const Private = ({ history }) => {
 
   const loadProfile = () => {
     const token = getCookie('token');
+    console.log(token)
     axios
-      .get(`${process.env.REACT_APP_API_URL}/user/${isAuth()._id}`, {
+      .get(`${window.env.CLIENT_URL}/users/${isAuth()._id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -30,7 +31,7 @@ const Private = ({ history }) => {
         setFormData({ ...formData, role, name, email });
       })
       .catch(err => {
-        toast.error(`Error To Your Information ${err.response.statusText}`);
+        toast.error(`Error ${err.response.statusText}`);
         if (err.response.status === 401) {
           signOut(() => {
             history.push('/login');
@@ -49,7 +50,7 @@ const Private = ({ history }) => {
     setFormData({ ...formData, textChange: 'Submitting' });
     axios
       .put(
-        `${process.env.REACT_APP_API_URL}/user/update`,
+        `${process.env.CLIENT_URL}/users/update`,
         {
           name,
           email,

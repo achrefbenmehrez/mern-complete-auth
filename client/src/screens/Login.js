@@ -50,7 +50,7 @@ const Login = ({ history }) => {
           });
         })
         .catch((err) => {
-          toast.error(err.response.data.error);
+          console.log(err)
         });
     } else {
       toast.error("Please fill all fields");
@@ -59,7 +59,7 @@ const Login = ({ history }) => {
 
   const sendFacebookToken = (userId, accessToken) => {
     axios
-      .post(`${process.env.CLIENT_URL}/facebook-login`, {
+      .post(`${window.env.CLIENT_URL}/facebook-login`, {
         userId,
         accessToken,
       })
@@ -158,6 +158,7 @@ const Login = ({ history }) => {
                   cookiePolicy={"single_host_origin"}
                   render={(renderProps) => (
                     <button
+                      type="button"
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
                       className="mt-3 w-full max-w-xs font-bold shadow-sm rounded-lg py-3
@@ -169,12 +170,12 @@ const Login = ({ history }) => {
                 ></GoogleLogin>
                 <FacebookLogin
                   appId={window.env.FACEBOOK_CLIENT}
-                  autoLoad={true}
                   fields="name,email,picture"
                   onClick={responseFacebook}
                   callback={responseFacebook}
                   render={(renderProps) => (
                     <button
+                    type="button"
                       onClick={renderProps.onClick}
                       disabled={renderProps.disabled}
                       className="mt-3 w-full max-w-xs font-bold shadow-sm rounded-lg py-3

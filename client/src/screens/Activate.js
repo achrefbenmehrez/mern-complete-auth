@@ -32,7 +32,7 @@ const Activate = ({ match }) => {
     e.preventDefault();
 
     axios
-      .post(`http://localhost:5000/users/activation`, {
+      .post(`https://complete-mern-auth.herokuapp.com/users/activation`, {
         token,
       })
       .then((res) => {

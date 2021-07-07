@@ -8,9 +8,7 @@ const app = express();
 
 connectDb();
 
-require('dotenv').config({
-    path: './config/config.env'
-});
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))

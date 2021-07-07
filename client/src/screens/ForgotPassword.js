@@ -17,7 +17,7 @@ const ForgotPassword = () => {
     if (email) {
       setFormData({ ...formData, textChange: "Submitting" });
       axios
-        .post(`http://localhost:5000/users/forgot-password`, {
+        .post(`https://complete-mern-auth.herokuapp.com/users/forgot-password`, {
           email,
         })
         .then((res) => {
